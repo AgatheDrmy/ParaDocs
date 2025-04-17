@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>ParaDocs</title>
+
+    <!--CSS-->
+    <link rel="stylesheet" href="../assets/CSS/navbar.css">
+    <link rel="stylesheet" href="../assets/css/comp_gen_eval.css">
+
+
+</head>
+
+<body>
+    <header>
+        <nav class = "navbar">
+            <ul class = "menu">
+                <li><img src = "../assets/imgs/logo.png" class = "img_menu"></li>
+                <li> <a href = "modif_data.html">Modifier la base de donnée</a></li>
+                <li> <a href = "list_eval.html">Créer une évaluation</a></li>
+                <li> <a href = "profil.html">Profil</a></li>
+                <li> <a href = "profil.html"><img src = "../assets/imgs/image.jpg" class = "img_menu"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Créer une évaluation</h2>
+        <h3>Choisir les composantes génériques</h3>
+        <div class="page">
+            <div class="contenu">
+                <div class="texte">
+                    <h4>Choississez un titre pour l'évaluation :</h4>
+                    <input type="text" class="rempli-c" placeholder="Ajouter un titre ...">
+                </div>
+                <div class="time">
+                    <div class="date_heure">
+                        <h4>Date et heure d'évaluation :</h4>
+                        <input type="datetime-local">
+                    </div>
+                    <div class="date_heure">
+                        <h4>Durée de l'évaluation :</h4>
+                        <input type="time">
+                    </div>
+                </div>
+                <div class="les-mods">
+                    <h4>Choissir les modalitées :</h4>
+                    <div class="mod-row">
+                        <div class="mod-col">
+                            <div class="mod">
+                                <p>Calculatrice :</p>
+                                <label>Oui</label>
+                                <input type="radio" name="ouinon-calc" value="oui">
+                                <label>Non</label>
+                                <input type="radio" name="ouinon-calc" value="non">
+                            </div>
+                            <div class="mod">
+                                <p>Ordinateur :</p>
+                                <label>Oui</label>
+                                <input type="radio" name="ouinon-ordi" value="oui">
+                                <label>Non</label>
+                                <input type="radio" name="ouinon-ordi" value="non">
+                            </div>
+                        </div>
+                        <div class="mod-col">
+                            <div class="mod">
+                                <p>Document :</p>
+                                <label>Oui</label>
+                                <input type="radio" name="ouinon-doc" value="oui">
+                                <label>Non</label>
+                                <input type="radio" name="ouinon-doc" value="non">
+                            </div>
+                            <div class="mod-autre">
+                                <p>Autre :</p>
+                                <input type="text" class="rempli-c" placeholder="Ajouter une nouvelle modalité si besoin ...">                        
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="texte">
+                    <h4>Texte d'introduction :</h4>
+                    <textarea placeholder="Ajoutez un texte..." class="rempli-c"></textarea>
+                </div>
+                <div class="ret-suiv">
+                    <button class="vide-c">Retour</button>
+                    <button class="vide-c">Suivant</button>
+                </div>
+            </div>
+        </div>

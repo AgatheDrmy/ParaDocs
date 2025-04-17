@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>ParaDocs</title>
+
+    <!--CSS-->
+    <link rel="stylesheet" href="../assets/CSS/navbar.css">
+    <link rel="stylesheet" href="../assets/css/profil.css">
+
+
+</head>
+
+<body>
+    <header>
+        <nav class = "navbar">
+            <ul class = "menu">
+                <li><img src = "../assets/imgs/logo.png" class = "img_menu"></li>
+                <li> <a href = "modif_data.html">Modifier la base de donnée</a></li>
+                <li> <a href = "list_eval.html">Créer une évaluation</a></li>
+                <li> <a href = "profil.html">Profil</a></li>
+                <li> <a href = "profil.html"><img src = "../assets/imgs/image.jpg" class = "img_menu"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Profil</h2>
+        <div class="contenu">
+            <div class="zone-texte">
+                <div class="cote-a-cote">
+                    <div class="texte">
+                        <p>Nom :</p>
+                        <input type="text" placeholder="Neige">
+                    </div>
+                    <div class="texte">
+                        <p>Prénom :</p>
+                        <input type="text" placeholder="Gilbert">
+                    </div>
+                </div>
+                <div class="texte">
+                    <p>Adresse mail :</p>
+                    <input type="text" placeholder="gilbert.neige@isen-ouest.yncrea.fr">
+                </div>
+                <div class="texte">
+                    <p>Mot de passe :</p>
+                    <button id="psw">************</button><!-- Attention c'est chelou faut modifier -->
+                    <button class="rempli">Changer le mot de passe</button>
+                </div>
+                <div class="cote-a-cote">
+                    <div class="texte">
+                        <p>Nombre d'évaluations créées :</p>
+                        <button>16</button>
+                    </div>
+                    <div class="texte">
+                        <p>Nombre de questions créées :</p>
+                        <button>56</button>
+                    </div>
+                </div>
+            </div>
+            <div class="photo-profil">
+                <div class="centrer"><img src = "../assets/imgs/image.jpg" class = "pdp"></div>
+                <div class="centrer"><h3>Gilbert Neige</h3></div>
+                <div class="centrer"><button class="rempli">Changer de photo de profil</button></div>
+            </div>
+        </div>
+        
+    </main>
+</body>
