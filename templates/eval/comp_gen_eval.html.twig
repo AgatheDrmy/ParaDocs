@@ -8,24 +8,18 @@
     <title>ParaDocs</title>
 
     <!--CSS-->
-    <link rel="stylesheet" href="../assets/CSS/navbar.css">
-    <link rel="stylesheet" href="../assets/css/comp_gen_eval.css">
+    <link rel="stylesheet" href="{{ asset('assets/CSS/navbar.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/comp_gen_eval.css')}}">
 
 
 </head>
 
 <body>
+    
     <header>
-        <nav class = "navbar">
-            <ul class = "menu">
-                <li><img src = "../assets/imgs/logo.png" class = "img_menu"></li>
-                <li> <a href = "modif_data.html">Modifier la base de donnée</a></li>
-                <li> <a href = "list_eval.html">Créer une évaluation</a></li>
-                <li> <a href = "profil.html">Profil</a></li>
-                <li> <a href = "profil.html"><img src = "../assets/imgs/image.jpg" class = "img_menu"></a></li>
-            </ul>
-        </nav>
+    {% include "_partials/_navbar.html.twig" %}
     </header>
+
     <main>
         <h2>Créer une évaluation</h2>
         <h3>Choisir les composantes génériques</h3>
