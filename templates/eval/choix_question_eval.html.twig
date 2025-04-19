@@ -1,25 +1,30 @@
-<!DOCTYPE html>
-<html lang="fr">
+{% extends "base.html.twig" %}
 
-
-<head>
+{% block head %}
     <meta charset="UTF-8">
 
     <title>ParaDocs</title>
 
     <!--CSS-->
+    {% block css %}
     <link rel="stylesheet" href="{{ asset('assets/CSS/navbar.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/css/choix_question_eval.css')}}">
+    {% endblock %}
+
 
     <!--JS-->
+    {% block javascripts %}
     <script src="{{ asset('assets/Js/modif_data.js') }}" defer></script>
+    {% endblock %}
 
-</head>
+
+{% endblock %}
+
 
 <body>
-
+{% block body %}
     <header>
-    {% include "_partials/_navbar.html.twig" %}
+    
     </header>
 
     <main>
@@ -430,7 +435,7 @@
 
         </div>
     </div>
-    
+{% endblock %}    
 </body>
 
 

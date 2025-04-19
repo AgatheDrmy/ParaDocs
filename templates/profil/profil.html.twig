@@ -1,20 +1,21 @@
-<!DOCTYPE html>
-<html lang="fr">
+{% extends "base.html.twig" %}
 
 
-<head>
+{% block head %}
+
     <meta charset="UTF-8">
 
     <title>ParaDocs</title>
 
     <!--CSS-->
-    <link rel="stylesheet" href="{{ asset('assets/CSS/navbar.css')}}">
-    <link rel="stylesheet" href="{{ asset('assets/css/profil.css')}}">
+    {% block css %}
+        <link rel="stylesheet" href="{{ asset('assets/CSS/navbar.css')}}">
+        <link rel="stylesheet" href="{{ asset('assets/CSS/profil.css')}}">
+    {% endblock %}
 
+{% endblock %}
 
-</head>
-
-<body>
+{% block body %}
     
     <header>
     {% include "_partials/_navbar.html.twig" %}
@@ -62,4 +63,5 @@
         </div>
         
     </main>
-</body>
+
+{% endblock %}

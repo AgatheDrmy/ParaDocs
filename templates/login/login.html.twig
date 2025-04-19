@@ -1,17 +1,24 @@
-<head>
+{% extends "base.html.twig" %}
+
+{% block head %}
+
     <meta charset="UTF-8">
     
     <!--CSS-->
+    {% block css %}
     <link rel="stylesheet" href="../assets/css/style_log.css">
+    {% endblock %}
 
     <!--JS-->
+    {% block javascripts %}
     <script src="../assets/js/login.js" defer></script>
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    {% endblock %}
 
+{% endblock %}
 
-</head>
-
+{% block body %}
 <div class="login-reg-panel">
     <div class="login-info-box">
         <h1>Bienvenue</h1>
@@ -80,3 +87,4 @@
         </div>
     </div>
 </div>
+{% endblock %}

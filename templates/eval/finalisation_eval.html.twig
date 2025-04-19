@@ -1,16 +1,21 @@
-<head>
+{% extends "base.html.twig" %}
+
+{% block head %}
+
     <meta charset="UTF-8">
 
     <title>ParaDocs</title>
 
     <!--CSS-->
+    {% block css %}
     <link rel="stylesheet" href="{{ asset('assets/CSS/navbar.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/css/finalisation_eval.css')}}">
+    {% endblock %}
 
 
-</head>
+{% endblock %}
 
-<body>
+{% block body %}
     
     <header>
     {% include "_partials/_navbar.html.twig" %}
@@ -53,3 +58,7 @@
                     <button class="vide-c">Retour</button>
                     <button class="vide-c">Valider</button>
                 </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
