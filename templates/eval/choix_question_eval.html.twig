@@ -21,7 +21,6 @@
 {% endblock %}
 
 
-<body>
 {% block body %}
     <header>
     
@@ -315,7 +314,7 @@
         <div class="ret-suiv">
             <div class="ret-suiv2">
                 <button class="vide-c">Retour</button>   
-                <button class="vide-c">Suivant</button>
+                <a class="vide-c" href="{{ path('app_eval_finalisation') }}">Suivant</a>
             </div>
         </div>
     </main>
@@ -436,9 +435,3 @@
         </div>
     </div>
 {% endblock %}    
-</body>
-
-
-
-
-</html>
