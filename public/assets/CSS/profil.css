@@ -1,0 +1,101 @@
+
+
+
+
+
+h2{
+    text-align: center;
+    margin-top: 5vh;
+    margin-bottom: 3vh;
+}
+
+p{
+    color: #6EA5BE;
+}
+
+input, button {
+    border-style: solid;
+    border-radius: 6px;
+    border-color: #6EA5BE;
+    padding-left: 4vw;
+    padding-right: 4vw;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    background-color: #ffffff;
+    color:#6EA5BE;
+    font-size: large;
+}
+
+input::placeholder{
+    color: #000000;
+}
+
+button#psw{
+    padding-right: 45vw;
+    color:#000000;
+    align-items: center;
+}
+
+button.rempli{
+    width: 15vw;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    border-radius: 6px;
+    background: #6EA5BE;
+    border: none;
+    color:#ffffff;
+    padding-left: 1vw;
+    padding-right: 1vw; 
+}
+
+.pdp{
+    width: 10vw;
+    border-radius: 50px;
+
+}
+
+
+
+
+
+
+div.contenu{
+    height: 40vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+div.zone-texte{
+    width: 50vw;
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    row-gap: 3vh; 
+}
+
+div.cote-a-cote{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    row-gap: 3vh; 
+}
+
+div.texte{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    row-gap: 1vh; 
+}
+
+div.photo-profil{
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+div.centrer{
+    display: flex;
+    justify-content: center;
+}
