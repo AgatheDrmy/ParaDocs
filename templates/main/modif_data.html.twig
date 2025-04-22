@@ -105,318 +105,42 @@
                             </div>
                         </li>
                     </a>
-                    <li>
-                        <p class="enonce-question">Qu’est ce qui permet au bases de données d’etres utilisé de facon proéminantes par les industriels de nos jours? en sachant qu’elles sont utilisées par IKEA, Zara, Super U et ...</p>
-                        <div class="param-question">
-                            <div class="type">
-                                <p class="nom">Type :</p>
-                                <p class="contenu-nom">QCM</p>
-                            </div>
+                    {% for q in question %}
+                        {% if q.IsActive == 1 %}
+                            <a class="question-card" href="{{ path('questions_list', {id: q.id}) }}">
+                                <li>
+                                    <p class="enonce-question">{{ q.enonce }}</p>
+                                    <div class="param-question">
+                                        <div class="type">
+                                            <p class="nom">Type :</p>
+                                            <p class="contenu-nom">{{ q.TypeQuestion.libelle }}</p>
+                                        </div>
 
-                            <div class="diff">
-                                <p class="nom">Difficulté :</p>
-                                <p class="contenu-nom">3</p>
-                            </div>
-                        </div>
-                        <div class="param-question">
-                            <div class="chapitre">
-                                <p class="nom">Chapitre :</p>
-                                <p class="contenu-nom">qsdfghjklkjhgfdsqSDFGHJJHGFDSQSD</p>
-                            </div>
-                            <div class="theme">
-                                <p class="nom">Thème :</p>
-                                <p class="contenu-nom">qzsfdghjkimgyeqezqfwdgbyj</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <p class="enonce-question">Qu’est ce qui permet au bases de données d’etres utilisé de facon proéminantes par les industriels de nos jours? en sachant qu’elles sont utilisées par IKEA, Zara, Super U et ...</p>
-                        <div class="param-question">
-                            <div class="type">
-                                <p class="nom">Type :</p>
-                                <p class="contenu-nom">QCM</p>
-                            </div>
-
-                            <div class="diff">
-                                <p class="nom">Difficulté :</p>
-                                <p class="contenu-nom">3</p>
-                            </div>
-                        </div>
-                        <div class="param-question">
-                            <div class="chapitre">
-                                <p class="nom">Chapitre :</p>
-                                <p class="contenu-nom">qsdfghjklkjhgfdsqSDFGHJJHGFDSQSD</p>
-                            </div>
-                            <div class="theme">
-                                <p class="nom">Thème :</p>
-                                <p class="contenu-nom">qzsfdghjkimgyeqezqfwdgbyj</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <p class="enonce-question">Qu’est ce qui permet au bases de données d’etres utilisé de facon proéminantes par les industriels de nos jours? en sachant qu’elles sont utilisées par IKEA, Zara, Super U et ...</p>
-                        <div class="param-question">
-                            <div class="type">
-                                <p class="nom">Type :</p>
-                                <p class="contenu-nom">QCM</p>
-                            </div>
-
-                            <div class="diff">
-                                <p class="nom">Difficulté :</p>
-                                <p class="contenu-nom">3</p>
-                            </div>
-                        </div>
-                        <div class="param-question">
-                            <div class="chapitre">
-                                <p class="nom">Chapitre :</p>
-                                <p class="contenu-nom">qsdfghjklkjhgfdsqSDFGHJJHGFDSQSD</p>
-                            </div>
-                            <div class="theme">
-                                <p class="nom">Thème :</p>
-                                <p class="contenu-nom">qzsfdghjkimgyeqezqfwdgbyj</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <p class="enonce-question">Qu’est ce qui permet au bases de données d’etres utilisé de facon proéminantes par les industriels de nos jours? en sachant qu’elles sont utilisées par IKEA, Zara, Super U et ...</p>
-                        <div class="param-question">
-                            <div class="type">
-                                <p class="nom">Type :</p>
-                                <p class="contenu-nom">QCM</p>
-                            </div>
-
-                            <div class="diff">
-                                <p class="nom">Difficulté :</p>
-                                <p class="contenu-nom">3</p>
-                            </div>
-                        </div>
-                        <div class="param-question">
-                            <div class="chapitre">
-                                <p class="nom">Chapitre :</p>
-                                <p class="contenu-nom">qsdfghjklkjhgfdsqSDFGHJJHGFDSQSD</p>
-                            </div>
-                            <div class="theme">
-                                <p class="nom">Thème :</p>
-                                <p class="contenu-nom">qzsfdghjkimgyeqezqfwdgbyj</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <p class="enonce-question">Qu’est ce qui permet au bases de données d’etres utilisé de facon proéminantes par les industriels de nos jours? en sachant qu’elles sont utilisées par IKEA, Zara, Super U et ...</p>
-                        <div class="param-question">
-                            <div class="type">
-                                <p class="nom">Type :</p>
-                                <p class="contenu-nom">QCM</p>
-                            </div>
-
-                            <div class="diff">
-                                <p class="nom">Difficulté :</p>
-                                <p class="contenu-nom">3</p>
-                            </div>
-                        </div>
-                        <div class="param-question">
-                            <div class="chapitre">
-                                <p class="nom">Chapitre :</p>
-                                <p class="contenu-nom">qsdfghjklkjhgfdsqSDFGHJJHGFDSQSD</p>
-                            </div>
-                            <div class="theme">
-                                <p class="nom">Thème :</p>
-                                <p class="contenu-nom">qzsfdghjkimgyeqezqfwdgbyj</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <p class="enonce-question">Qu’est ce qui permet au bases de données d’etres utilisé de facon proéminantes par les industriels de nos jours? en sachant qu’elles sont utilisées par IKEA, Zara, Super U et ...</p>
-                        <div class="param-question">
-                            <div class="type">
-                                <p class="nom">Type :</p>
-                                <p class="contenu-nom">QCM</p>
-                            </div>
-
-                            <div class="diff">
-                                <p class="nom">Difficulté :</p>
-                                <p class="contenu-nom">3</p>
-                            </div>
-                        </div>
-                        <div class="param-question">
-                            <div class="chapitre">
-                                <p class="nom">Chapitre :</p>
-                                <p class="contenu-nom">qsdfghjklkjhgfdsqSDFGHJJHGFDSQSD</p>
-                            </div>
-                            <div class="theme">
-                                <p class="nom">Thème :</p>
-                                <p class="contenu-nom">qzsfdghjkimgyeqezqfwdgbyj</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <p class="enonce-question">Qu’est ce qui permet au bases de données d’etres utilisé de facon proéminantes par les industriels de nos jours? en sachant qu’elles sont utilisées par IKEA, Zara, Super U et ...</p>
-                        <div class="param-question">
-                            <div class="type">
-                                <p class="nom">Type :</p>
-                                <p class="contenu-nom">QCM</p>
-                            </div>
-
-                            <div class="diff">
-                                <p class="nom">Difficulté :</p>
-                                <p class="contenu-nom">3</p>
-                            </div>
-                        </div>
-                        <div class="param-question">
-                            <div class="chapitre">
-                                <p class="nom">Chapitre :</p>
-                                <p class="contenu-nom">qsdfghjklkjhgfdsqSDFGHJJHGFDSQSD</p>
-                            </div>
-                            <div class="theme">
-                                <p class="nom">Thème :</p>
-                                <p class="contenu-nom">qzsfdghjkimgyeqezqfwdgbyj</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <p class="enonce-question">Qu’est ce qui permet au bases de données d’etres utilisé de facon proéminantes par les industriels de nos jours? en sachant qu’elles sont utilisées par IKEA, Zara, Super U et ...</p>
-                        <div class="param-question">
-                            <div class="type">
-                                <p class="nom">Type :</p>
-                                <p class="contenu-nom">QCM</p>
-                            </div>
-
-                            <div class="diff">
-                                <p class="nom">Difficulté :</p>
-                                <p class="contenu-nom">3</p>
-                            </div>
-                        </div>
-                        <div class="param-question">
-                            <div class="chapitre">
-                                <p class="nom">Chapitre :</p>
-                                <p class="contenu-nom">qsdfghjklkjhgfdsqSDFGHJJHGFDSQSD</p>
-                            </div>
-                            <div class="theme">
-                                <p class="nom">Thème :</p>
-                                <p class="contenu-nom">qzsfdghjkimgyeqezqfwdgbyj</p>
-                            </div>
-                        </div>
-                    </li>
+                                        <div class="diff">
+                                            <p class="nom">Difficulté :</p>
+                                            <p class="contenu-nom">{{ q.difficulte.libelle }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="param-question">
+                                        <div class="chapitre">
+                                            <p class="nom">Chapitre :</p>
+                                            <p class="contenu-nom">{{ q.Chapitre.contenu }}</p>
+                                        </div>
+                                        <div class="theme">
+                                            <p class="nom">Thème :</p>
+                                            <p class="contenu-nom">{{ q.Chapitre.Theme.contenu }}</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </a>
+                        {% endif %}
+                    {% endfor %}
                 </ul>
             </div>
         </div>    
     </main>
 
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close-mine">&times;</span>
-            <h3>Modifier la question</h3>
-
-            <div class="info-question">
-                <div class="info" id="type">
-                    <p class="element">Type :</p>
-                    <select name="type">
-                        <option value="">Choissez un type</option> 
-                        <option value="QCM">QCM</option>
-                        <option value="libre">Libre</option>
-                    </select>
-                </div>
-                <div class="info" id="chapitre">
-                    <p class="element">Thèmes :</p>
-                    <div class="choix-chap-them">
-                        <ul class="list-chap-them">
-                            <li>
-                                <input type="checkbox" >
-                                <p>qsdfghjklm</p>
-                            </li>
-                            <li>
-                                <input type="checkbox" >
-                                <p>qsdfghjklm</p>
-                            </li>
-                            <li>
-                                <input type="checkbox" >
-                                <p>qsdfghjklm</p>
-                            </li>
-                            <li>
-                                <input type="checkbox" >
-                                <p>qsdfghjklm</p>
-                            </li>
-                            <li>
-                                <input type="checkbox" >
-                                <p>qsdfghjklm</p>
-                            </li>
-                            <li>
-                                <input type="checkbox" >
-                                <p>qsdfghjklm</p>
-                            </li>   
-                        </ul>    
-                    </div>
-                </div>
-                <div class="info" id="theme">
-                    <p class="element">Chapitre :</p>
-                    <div class="choix-chap-them">
-                        <ul class="list-chap-them">
-                            <li>
-                                <input type="checkbox" >
-                                <p>qsdfghjklm</p>
-                            </li>
-                            <li>
-                                <input type="checkbox" >
-                                <p>qsdfghjklm</p>
-                            </li>
-                            <li>
-                                <input type="checkbox" >
-                                <p>qsdfghjklm</p>
-                            </li>
-                            <li>
-                                <input type="checkbox" >
-                                <p>qsdfghjklm</p>
-                            </li>
-                            <li>
-                                <input type="checkbox" >
-                                <p>qsdfghjklm</p>
-                            </li>
-                            <li>
-                                <input type="checkbox" >
-                                <p>qsdfghjklm</p>
-                            </li>   
-                        </ul>    
-                    </div>
-                </div>
-                <div class="info" id="enonce">
-                    <p class="element">Enoncé</p>
-                    <textarea placeholder="Ajoutez un texte..." class="enonce"></textarea>
-                </div>
-                <div class="info" id="reponses">
-                    <p class="element">Réponses :</p>
-                    <textarea placeholder="Ajoutez un texte..." class="reponses"></textarea>
-                    <textarea placeholder="Ajoutez un texte..." class="reponses"></textarea>
-                    <button class="bouton-vide">Ajouter une réponse</button>
-                </div>
-                <div class="info" id="difficulte">
-                    <p class="element">Difficulté :</p>
-                    <form>
-                        <fieldset>
-                            <span class="star-cb-group">
-                            <input type="radio" id="rating-5" name="rating" value="5" /><label for="rating-5">5</label>
-                            <input type="radio" id="rating-4" name="rating" value="4" checked="checked" /><label for="rating-4">4</label>
-                            <input type="radio" id="rating-3" name="rating" value="3" /><label for="rating-3">3</label>
-                            <input type="radio" id="rating-2" name="rating" value="2" /><label for="rating-2">2</label>
-                            <input type="radio" id="rating-1" name="rating" value="1" /><label for="rating-1">1</label>
-                            <input type="radio" id="rating-0" name="rating" value="0" class="star-cb-clear" /><label for="rating-0">0</label>
-                            </span>
-                        </fieldset>
-                    </form>
-                </div>
-                <div class="info" id="image-question">
-                    <button class="bouton-vide">Ajouter une image</button>
-                </div>
-                <div class="sauv-suppr">
-                    <button class="rempli-c">Sauvegarder</button>
-                    <button class="suppr">Supprimer la question(désactiver)</button>
-                </div>
-                
-            </div>
-            
-
-
-        </div>
-    </div>
+    
     <footer>
     {% include "_partials/_footer.html.twig" %}
     </footer>
