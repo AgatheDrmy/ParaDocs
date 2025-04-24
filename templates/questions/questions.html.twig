@@ -35,76 +35,54 @@
                 <div class="info" id="type">
                     <p class="element">Type :</p>
                     <select name="type">
-                        <option value="">Choissez un type</option> 
-                        <option value="QCM">QCM</option>
-                        <option value="libre">Libre</option>
+                        {% for t in type %}
+                            <option value="{{t.libelle}}"   
+                            {% if question.TypeQuestion.id == t.id %}
+                                selected
+                            {% endif %}     
+                            >{{t.libelle}}</option>
+                        {% endfor %}
                     </select>
                 </div>
                 <div class="info" id="chapitre">
                     <p class="element">Thèmes :</p>
                     <div class="choix-chap-them">
                         <ul class="list-chap-them">
-                            <li>
-                                <input type="checkbox" >
-                                <p>qsdfghjklm</p>
-                            </li>
-                            <li>
-                                <input type="checkbox" >
-                                <p>qsdfghjklm</p>
-                            </li>
-                            <li>
-                                <input type="checkbox" >
-                                <p>qsdfghjklm</p>
-                            </li>
-                            <li>
-                                <input type="checkbox" >
-                                <p>qsdfghjklm</p>
-                            </li>
-                            <li>
-                                <input type="checkbox" >
-                                <p>qsdfghjklm</p>
-                            </li>
-                            <li>
-                                <input type="checkbox" >
-                                <p>qsdfghjklm</p>
-                            </li>   
-                        </ul>    
+                            {% for th in theme %}
+                                <li>
+                                    <input type="checkbox" 
+                                    {% if question.Chapitre.Theme.id == th.id %}
+                                        checked
+                                    {% endif %}
+                                    >
+                                    <p>{{ th.contenu }}</p>
+                                </li>
+                                
+                            {% endfor %}
+                        </ul>   
                     </div>
                 </div>
                 <div class="info" id="theme">
                     <p class="element">Chapitre :</p>
                     <div class="choix-chap-them">
                         <ul class="list-chap-them">
-                            <li>
-                                <input type="checkbox" >
-                                <p>qsdfghjklm</p>
-                            </li>
-                            <li>
-                                <input type="checkbox" >
-                                <p>qsdfghjklm</p>
-                            </li>
-                            <li>
-                                <input type="checkbox" >
-                                <p>qsdfghjklm</p>
-                            </li>
-                            <li>
-                                <input type="checkbox" >
-                                <p>qsdfghjklm</p>
-                            </li>
-                            <li>
-                                <input type="checkbox" >
-                                <p>qsdfghjklm</p>
-                            </li>
-                            <li>
-                                <input type="checkbox" >
-                                <p>qsdfghjklm</p>
-                            </li>   
+                            {% for c in chapitre %}
+                                <li>
+                                    <input type="checkbox" 
+                                    {% if question.Chapitre.id == c.id %}
+                                        checked
+                                    {% endif %}
+                                    >
+                                    <p>{{ c.contenu }}</p>
+                                </li>
+                                
+                            {% endfor %}  
                         </ul>    
                     </div>
                 </div>
                 <div class="info" id="enonce">
                     <p class="element">Enoncé</p>
-                    <textarea placeholder="Ajoutez un texte..." class="enonce"></textarea>
+                    <textarea placeholder="Ajoutez un texte..." class="enonce"> {{ question.enonce }}</textarea>
                 </div>
                 <div class="info" id="reponses">
                     <p class="element">Réponses :</p>
@@ -114,18 +92,15 @@
                 </div>
                 <div class="info" id="difficulte">
                     <p class="element">Difficulté :</p>
-                    <form>
-                        <fieldset>
-                            <span class="star-cb-group">
-                            <input type="radio" id="rating-5" name="rating" value="5" /><label for="rating-5">5</label>
-                            <input type="radio" id="rating-4" name="rating" value="4" checked="checked" /><label for="rating-4">4</label>
-                            <input type="radio" id="rating-3" name="rating" value="3" /><label for="rating-3">3</label>
-                            <input type="radio" id="rating-2" name="rating" value="2" /><label for="rating-2">2</label>
-                            <input type="radio" id="rating-1" name="rating" value="1" /><label for="rating-1">1</label>
-                            <input type="radio" id="rating-0" name="rating" value="0" class="star-cb-clear" /><label for="rating-0">0</label>
-                            </span>
-                        </fieldset>
-                    </form>
+                    <select name="type">
+                        {% for d in difficulte %}
+                            <option value="{{d.libelle}}"   
+                            {% if question.Difficulte.id == d.id %}
+                                selected
+                            {% endif %}     
+                            >{{d.libelle}}</option>
+                        {% endfor %}
+                    </select>
                 </div>
                 <div class="info" id="image-question">
                     <button class="bouton-vide">Ajouter une image</button>
