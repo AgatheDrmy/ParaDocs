@@ -2,8 +2,6 @@
 
 namespace App\Controller;
 
-use App\Repository\QuestionRepository;
-use App\Repository\EvaluationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -12,9 +10,11 @@ use Symfony\Component\Routing\Attribute\Route;
 class EvalController extends AbstractController
 {
     #[Route('/', name: 'list')]
-    public function list(EvaluationRepository $evaluationrepository)
+    public function list(): Response
     {
-        return $this->render('eval/list_eval.html.twig', ['evaluation' => $evaluationrepository->findBy([], ['id' => 'asc'])]);
+        return $this->render('eval/list_eval.html.twig', [
+            'controller_name' => 'EvalController',
+        ]);
     }
 
     #[Route('/comp', name: 'gen')]
@@ -26,9 +26,11 @@ class EvalController extends AbstractController
     }
 
     #[Route('/choix', name: 'choix')]
-    public function choix(QuestionRepository $questionrepository): Response
+    public function choix(): Response
     {
-        return $this->render('eval/choix_question_eval.html.twig', ['question' => $questionrepository->findBy([], ['id' => 'asc'])]);
+        return $this->render('eval/choix_question_eval.html.twig', [
+            'controller_name' => 'EvalController',
+        ]);
     }
 
     #[Route('/finalisation', name: 'finalisation')]
