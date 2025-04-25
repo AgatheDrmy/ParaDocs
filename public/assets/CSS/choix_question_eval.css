@@ -140,6 +140,11 @@ ul li:hover {
     background: #F8F8F8;
 }
 
+a.question-card{
+    color:#000000;
+    text-decoration: none;
+}
+
 
 
 div.search-button{

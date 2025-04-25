@@ -22,11 +22,22 @@ use Symfony\Component\Routing\Annotation\Route;
 class QuestionController extends AbstractController
 {
     #[Route('/{id}/modifier', name: 'list')]
-    public function list(Question $question, TypeRepository $typerepository, DifficulteRepository $difficulterepository, ChapitreRepository $chapitrerepository, ThemeRepository $themerepository): Response
+    public function list(Request $request,  EntityManagerInterface $em, Question $question, TypeRepository $typerepository, DifficulteRepository $difficulterepository, ChapitreRepository $chapitrerepository, ThemeRepository $themerepository): Response
     {
         // $enonce = $question->getEnonce();
 
         $questionForm = $this->createForm(AddQuestionFormType::class, $question);
+
+        $questionForm->handleRequest($request);
+
+        if($questionForm->isSubmitted() && $questionForm->isValid()){
+            $em->persist($question);
+            $em->flush();
+
+            $this -> addFlash('success', 'question créée');
+
+            return $this->redirectToRoute('apphome');
+        }
 
         return $this->render('questions/questions.html.twig', [
             'question' => $question,

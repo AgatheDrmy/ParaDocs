@@ -36,7 +36,7 @@
                     <div class="info" id="type">
                         <label for="{{questionForm.type_question.vars.id}}" class="element">Type :</label>
                         <select id="{{questionForm.type_question.vars.id}}" name="{{ questionForm.type_question.vars.full_name }}">
-                        {% if questionForm.vars.submitted %}
+                        {% if questionForm.enonce.vars.data is not null %}
                             {% for t in type %}
                                 <option value="{{t.id}}" name="{{ questionForm.type_question.vars.full_name }}"  
                                     {% if question.TypeQuestion.id == t.id %}
@@ -57,10 +57,10 @@
                         <label for="{{questionForm.chapitre.vars.id}}" class="element">Chapitre :</label>
                         <div class="choix-chap-them">
                             <ul class="list-chap-them">
-                                {% if questionForm.vars.submitted %}
+                                {% if questionForm.enonce.vars.data is not null %}
                                     {% for c in chapitre %}
                                         <li>
-                                            <input type="checkbox" name="{{ questionForm.chapitre.vars.full_name }}"
+                                            <input type="radio" id="{{questionForm.chapitre.vars.id}}" value="{{ c.id }}" name="{{ questionForm.chapitre.vars.full_name }}"
                                                 {% if question.Chapitre.id == c.id %}
                                                     checked
                                                 {% endif %}
@@ -83,7 +83,7 @@
                     </div>
                     <div class="info" id="enonce">
                         <label for="{{questionForm.enonce.vars.id}}" class="element">Enoncé :</label>
-                        {% if questionForm.vars.submitted %}
+                        {% if questionForm.enonce.vars.data is not null %}
                             <textarea placeholder="Ajoutez un texte..."  name="{{ questionForm.enonce.vars.full_name }}" id="{{questionForm.enonce.vars.id}}" class="enonce"> {{question.enonce}} </textarea>
                         {% else %}
                             <textarea placeholder="Ajoutez un texte..." name="{{ questionForm.enonce.vars.full_name }}" id="{{questionForm.enonce.vars.id}}" class="enonce" ></textarea>
@@ -101,27 +101,25 @@
                     <div class="info" id="difficulte">
                         <label for="{{questionForm.difficulte.vars.id}}" class="element">Difficulté :</label>
                         <select id="{{questionForm.difficulte.vars.id}}" name="{{ questionForm.difficulte.vars.full_name }}">
-                            {% if questionForm.vars.submitted %}
-                                <select name="type">
+                            {% if questionForm.enonce.vars.data is not null %}
                                     {% for d in difficulte %}
-                                        <option value="{{d.libelle}}"   
+                                        <option value="{{d.id}}"   
                                         {% if question.Difficulte.id == d.id %}
                                             selected
                                         {% endif %}     
                                         >{{d.libelle}}</option>
                                     {% endfor %}
-                                </select>
                             {% else %}
                                 
                                 {% for d in difficulte %}
                                     <option  value="{{d.id}}">{{d.libelle}}</option>
                                 {% endfor %}
-                                
-                                {{ form_errors(questionForm.difficulte) }}
-                                {% do questionForm.difficulte.setRendered %}
 
                             {% endif %}
                         </select>
+
+                        {{ form_errors(questionForm.difficulte) }}
+                        {% do questionForm.difficulte.setRendered %}
                     </div>
                     <div class="sauv-suppr">
                         <button class="rempli-c" type="submit">Sauvegarder</button>

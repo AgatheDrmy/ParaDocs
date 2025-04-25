@@ -83,7 +83,10 @@ ul li:hover {
   background: #F8F8F8;
 }
 
-
+a.question-card{
+  color:#000000;
+  text-decoration: none;
+}
 
 div.search-button{
   width: 22vw;
@@ -242,7 +245,7 @@ color: #D64551;
   background-color: #fefefe;
   margin: auto;
   padding: 20px;
-  border: 1px solid #888;
+
   width: 80%;
   overflow: visible !important;
 
