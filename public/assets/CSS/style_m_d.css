@@ -83,7 +83,10 @@ ul li:hover {
   background: #F8F8F8;
 }
 
-
+a.question-card{
+  color:#000000;
+  text-decoration: none;
+}
 
 div.search-button{
   width: 22vw;
@@ -119,14 +122,17 @@ input[type="search"]::placeholder{
   color: #ffffff;
 }
   
-button.rempli{
-  width: 10vw;
+.rempli{
   padding-top: 1vh;
   padding-bottom: 1vh;
+  padding-left: 2vw;
+  padding-right: 2vw;
   border-radius: 30px;
   background: #6EA5BE;
   border: none;
   color:#ffffff;
+  text-decoration: none;
+
 }
 
 button.rempli-c{
@@ -239,7 +245,7 @@ color: #D64551;
   background-color: #fefefe;
   margin: auto;
   padding: 20px;
-  border: 1px solid #888;
+
   width: 80%;
   overflow: visible !important;
 
@@ -297,11 +303,11 @@ select{
   border-radius: 6px;
 }
 
-p.element{
+.element{
   color:#D64551;
 }
 
-#reponses p.element{
+#reponses .element{
   margin-bottom:0vh;
 
 }
