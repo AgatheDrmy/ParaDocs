@@ -1,0 +1,129 @@
+{% extends "base.html.twig" %}
+
+{% block head %}
+    <meta charset="UTF-8">
+    
+    <!--CSS-->
+    {% block css %}
+    <link rel="stylesheet" href="../assets/css/style_log.css">
+    {% endblock %}
+
+    <!--JS-->
+    {% block javascripts %}
+    <script src="../assets/js/login.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    {% endblock %}
+{% endblock %}
+
+{% block body %}
+<div class="login-reg-panel">
+    <div class="login-info-box">
+        <h1>Bienvenue</h1>
+    </div> 
+                        
+    <div class="register-info-box">
+        <h1>Bienvenue</h1>
+    </div>
+                        
+    <div class="white-panel">
+
+        <!-- ************************** LOGIN PART ************************** -->
+
+        <div class="login-show">
+            <h2>Connexion</h2>
+            <p>Veuillez vous connecter a votre compte.</p>
+
+            {# Ajout du formulaire de connexion avec la bonne méthode et action #}
+            <form method="post" action="{{ path('app_login') }}" id="login-form">
+                {% if error %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+
+                <div class="email">
+                    <p>adresse mail</p>
+                    <input type="email" name="email" value="{{ last_username }}" placeholder="Entrez votre mail" required autofocus>
+                </div>
+
+                <div class="password">
+                    <p>mot de passe</p>
+                    <input type="password" name="password" placeholder="Entrez votre mot de passe" required>
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                </div>
+
+                {#
+                    Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+                    See https://symfony.com/doc/current/security/remember_me.html
+
+                    <div class="checkbox mb-3">
+                        <input type="checkbox" name="_remember_me" id="_remember_me">
+                        <label for="_remember_me">Remember me</label>
+                    </div>
+                #}
+
+                <button type="submit" name="login_submit">Connexion</button>
+            </form>
+            
+            <!-- <a href="">Mot de passe oublié?</a> -->
+
+            <label id="label-login" for="log-login-show">Créer un compte</label>
+            <input type="radio" name="active-log-panel" id="log-login-show">
+        </div>
+
+        <!-- ************************** END LOGIN PART ************************** -->
+
+
+        <!-- ************************** REGISTER PART ************************** -->
+
+        <div class="register-show">
+            <h2>Créer un compte</h2>
+
+            {{ form_start(registrationForm, {
+                'attr': {'id': 'register-form', 'class': 'registration-form'},
+                'action': path('app_register')
+            }) }}
+
+            <div class="pseudo">
+                <div class="nom">
+                    <p>Nom</p>
+                    {{ form_widget(registrationForm.nom, {'attr': {'class': 'nom', 'placeholder': 'Entrez votre nom'}}) }}
+                    {{ form_errors(registrationForm.nom) }}
+                </div>
+                <div class="prenom">
+                    <p>Prénom</p>
+                    {{ form_widget(registrationForm.prenom, {'attr': {'class': 'prenom', 'placeholder': 'Entrez votre prénom'}}) }}
+                    {{ form_errors(registrationForm.prenom) }}
+                </div>
+            </div>
+
+            <div class="email">
+                <p>Adresse mail</p>
+                {{ form_widget(registrationForm.email, {'attr': {'placeholder': 'Entrez votre mail'}}) }}
+                {{ form_errors(registrationForm.email) }}
+            </div>
+
+            <div class="password">
+                <p>Mot de passe</p>
+                {{ form_widget(registrationForm.plainPassword, {'attr': {'placeholder': 'Entrez le mot de passe'}}) }}
+                {{ form_errors(registrationForm.plainPassword) }}
+            </div>
+
+            <!--
+            <div class="confirm_password">
+                <p>Confirmer le mot de passe</p>
+                <input type="password" placeholder="Confirmez le mot de passe">
+            </div>
+            -->
+
+            <button type="submit">Créer un compte</button>
+
+            {{ form_end(registrationForm) }}
+
+            <label id="label-register" for="log-reg-show">Se connecter</label>
+            <input type="radio" name="active-log-panel" id="log-reg-show" checked="checked">
+        </div>
+
+        <!-- ************************** END REGISTER PART ************************** -->
+
+    </div>
+</div>
+{% endblock %}

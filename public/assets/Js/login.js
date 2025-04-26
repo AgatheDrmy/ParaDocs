@@ -1,6 +1,15 @@
 $(document).ready(function(){
     $('.login-info-box').fadeOut();
     $('.login-show').addClass('show-log-panel');
+
+    $('#register-form').on('submit', function(e) {
+        // On s'assure que le formulaire est visible avant soumission
+        $('.register-show').addClass('show-log-panel');
+        $('.login-show').removeClass('show-log-panel');
+        // Ne pas empêcher la soumission
+        return true;
+    });
+
 });
 
 
