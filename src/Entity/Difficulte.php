@@ -19,9 +19,9 @@ class Difficulte
     private ?string $libelle = null;
 
     /**
-     * @var Collection<int, question>
+     * @var Collection<int, Question>
      */
-    #[ORM\OneToMany(targetEntity: question::class, mappedBy: 'difficulte')]
+    #[ORM\OneToMany(targetEntity: Question::class, mappedBy: 'difficulte')]
     private Collection $difficulte_question;
 
     /**
@@ -54,14 +54,14 @@ class Difficulte
     }
 
     /**
-     * @return Collection<int, question>
+     * @return Collection<int, Question>
      */
     public function getDifficulteQuestion(): Collection
     {
         return $this->difficulte_question;
     }
 
-    public function addDifficulteQuestion(question $difficulteQuestion): static
+    public function addDifficulteQuestion(Question $difficulteQuestion): static
     {
         if (!$this->difficulte_question->contains($difficulteQuestion)) {
             $this->difficulte_question->add($difficulteQuestion);
@@ -71,7 +71,7 @@ class Difficulte
         return $this;
     }
 
-    public function removeDifficulteQuestion(question $difficulteQuestion): static
+    public function removeDifficulteQuestion(Question $difficulteQuestion): static
     {
         if ($this->difficulte_question->removeElement($difficulteQuestion)) {
             // set the owning side to null (unless already changed)

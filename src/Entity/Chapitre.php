@@ -19,9 +19,9 @@ class Chapitre
     private ?string $contenu = null;
 
     /**
-     * @var Collection<int, question>
+     * @var Collection<int, Question>
      */
-    #[ORM\OneToMany(targetEntity: question::class, mappedBy: 'chapitre', orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: Question::class, mappedBy: 'chapitre', orphanRemoval: true)]
     private Collection $chapitre_question;
 
     #[ORM\ManyToOne(inversedBy: 'theme_chapitre')]
@@ -51,14 +51,14 @@ class Chapitre
     }
 
     /**
-     * @return Collection<int, question>
+     * @return Collection<int, Question>
      */
     public function getChapitreQuestion(): Collection
     {
         return $this->chapitre_question;
     }
 
-    public function addChapitreQuestion(question $chapitreQuestion): static
+    public function addChapitreQuestion(Question $chapitreQuestion): static
     {
         if (!$this->chapitre_question->contains($chapitreQuestion)) {
             $this->chapitre_question->add($chapitreQuestion);
@@ -68,7 +68,7 @@ class Chapitre
         return $this;
     }
 
-    public function removeChapitreQuestion(question $chapitreQuestion): static
+    public function removeChapitreQuestion(Question $chapitreQuestion): static
     {
         if ($this->chapitre_question->removeElement($chapitreQuestion)) {
             // set the owning side to null (unless already changed)

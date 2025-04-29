@@ -19,7 +19,7 @@ class Theme
     private ?string $contenu = null;
 
     /**
-     * @var Collection<int, chapitre>
+     * @var Collection<int, Chapitre>
      */
     #[ORM\OneToMany(targetEntity: chapitre::class, mappedBy: 'theme', orphanRemoval: true)]
     private Collection $theme_chapitre;
@@ -54,14 +54,14 @@ class Theme
     }
 
     /**
-     * @return Collection<int, chapitre>
+     * @return Collection<int, Chapitre>
      */
     public function getThemeChapitre(): Collection
     {
         return $this->theme_chapitre;
     }
 
-    public function addThemeChapitre(chapitre $themeChapitre): static
+    public function addThemeChapitre(Chapitre $themeChapitre): static
     {
         if (!$this->theme_chapitre->contains($themeChapitre)) {
             $this->theme_chapitre->add($themeChapitre);
@@ -71,7 +71,7 @@ class Theme
         return $this;
     }
 
-    public function removeThemeChapitre(chapitre $themeChapitre): static
+    public function removeThemeChapitre(Chapitre $themeChapitre): static
     {
         if ($this->theme_chapitre->removeElement($themeChapitre)) {
             // set the owning side to null (unless already changed)

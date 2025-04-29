@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use App\Entity\Evaluation;
 
 #[ORM\Entity(repositoryClass: UtilisateurRepository::class)]
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
@@ -60,13 +61,17 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @var Collection<int, Evaluation>
      */
+    
     #[ORM\OneToMany(targetEntity: Evaluation::class, mappedBy: 'evaluation_utilisateur', orphanRemoval: true)]
     private Collection $id_evaluation;
+    
+    //private $id_evaluation;
 
     public function __construct()
     {
         $this->id_question = new ArrayCollection();
         $this->id_evaluation = new ArrayCollection();
+        //$this->id_evaluation = [];
     }
 
     public function getId(): ?int
@@ -249,9 +254,11 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @return Collection<int, Evaluation>
      */
+    
     public function getIdEvaluation(): Collection
     {
         return $this->id_evaluation;
+        //return [];
     }
 
     public function addIdEvaluation(Evaluation $idEvaluation): static
@@ -260,6 +267,7 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
             $this->id_evaluation->add($idEvaluation);
             $idEvaluation->setEvaluationUtilisateur($this);
         }
+
 
         return $this;
     }

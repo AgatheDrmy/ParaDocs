@@ -29,9 +29,9 @@ class Question
     private ?type $type_question = null;
 
     /**
-     * @var Collection<int, proposition>
+     * @var Collection<int, Proposition>
      */
-    #[ORM\OneToMany(targetEntity: proposition::class, mappedBy: 'id_question', orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: Proposition::class, mappedBy: 'id_question', orphanRemoval: true)]
     private Collection $proposition_question;
 
     #[ORM\ManyToOne(inversedBy: 'difficulte_question')]
@@ -40,7 +40,7 @@ class Question
 
     #[ORM\ManyToOne(inversedBy: 'id_question')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?utilisateur $question_utilisateur = null;
+    private ?Utilisateur $question_utilisateur = null;
 
     #[ORM\ManyToOne(inversedBy: 'chapitre_question')]
     #[ORM\JoinColumn(nullable: false)]
@@ -92,12 +92,12 @@ class Question
         return $this;
     }
 
-    public function getTypeQuestion(): ?type
+    public function getTypeQuestion(): ?Type
     {
         return $this->type_question;
     }
 
-    public function setTypeQuestion(?type $type_question): static
+    public function setTypeQuestion(?Type $type_question): static
     {
         $this->type_question = $type_question;
 
@@ -105,14 +105,14 @@ class Question
     }
 
     /**
-     * @return Collection<int, proposition>
+     * @return Collection<int, Proposition>
      */
     public function getPropositionQuestion(): Collection
     {
         return $this->proposition_question;
     }
 
-    public function addPropositionQuestion(proposition $propositionQuestion): static
+    public function addPropositionQuestion(Proposition $propositionQuestion): static
     {
         if (!$this->proposition_question->contains($propositionQuestion)) {
             $this->proposition_question->add($propositionQuestion);
@@ -122,7 +122,7 @@ class Question
         return $this;
     }
 
-    public function removePropositionQuestion(proposition $propositionQuestion): static
+    public function removePropositionQuestion(Proposition $propositionQuestion): static
     {
         if ($this->proposition_question->removeElement($propositionQuestion)) {
             // set the owning side to null (unless already changed)

@@ -48,20 +48,20 @@ class Evaluation
 
     #[ORM\ManyToOne(inversedBy: 'id_evaluation')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?theme $theme_eval = null;
+    private ?Theme $theme_eval = null;
 
     #[ORM\ManyToOne(inversedBy: 'id_evaluation')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?difficulte $difficulte_eval = null;
+    private ?Difficulte $difficulte_eval = null;
 
     #[ORM\ManyToOne(inversedBy: 'id_evaluation')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?utilisateur $evaluation_utilisateur = null;
+    private ?Utilisateur $evaluation_utilisateur = null;
 
     /**
-     * @var Collection<int, question>
+     * @var Collection<int, Question>
      */
-    #[ORM\ManyToMany(targetEntity: question::class)]
+    #[ORM\ManyToMany(targetEntity: Question::class)]
     private Collection $question_evaluation;
 
     public function __construct()
@@ -194,36 +194,36 @@ class Evaluation
         return $this;
     }
 
-    public function getThemeEval(): ?theme
+    public function getThemeEval(): ?Theme
     {
         return $this->theme_eval;
     }
 
-    public function setThemeEval(?theme $theme_eval): static
+    public function setThemeEval(?Theme $theme_eval): static
     {
         $this->theme_eval = $theme_eval;
 
         return $this;
     }
 
-    public function getDifficulteEval(): ?difficulte
+    public function getDifficulteEval(): ?Difficulte
     {
         return $this->difficulte_eval;
     }
 
-    public function setDifficulteEval(?difficulte $difficulte_eval): static
+    public function setDifficulteEval(?Difficulte $difficulte_eval): static
     {
         $this->difficulte_eval = $difficulte_eval;
 
         return $this;
     }
 
-    public function getEvaluationUtilisateur(): ?utilisateur
+    public function getEvaluationUtilisateur(): ?Utilisateur
     {
         return $this->evaluation_utilisateur;
     }
 
-    public function setEvaluationUtilisateur(?utilisateur $evaluation_utilisateur): static
+    public function setEvaluationUtilisateur(?Utilisateur $evaluation_utilisateur): static
     {
         $this->evaluation_utilisateur = $evaluation_utilisateur;
 
@@ -231,14 +231,14 @@ class Evaluation
     }
 
     /**
-     * @return Collection<int, question>
+     * @return Collection<int, Question>
      */
     public function getQuestionEvaluation(): Collection
     {
         return $this->question_evaluation;
     }
 
-    public function addQuestionEvaluation(question $questionEvaluation): static
+    public function addQuestionEvaluation(Question $questionEvaluation): static
     {
         if (!$this->question_evaluation->contains($questionEvaluation)) {
             $this->question_evaluation->add($questionEvaluation);
@@ -247,7 +247,7 @@ class Evaluation
         return $this;
     }
 
-    public function removeQuestionEvaluation(question $questionEvaluation): static
+    public function removeQuestionEvaluation(Question $questionEvaluation): static
     {
         $this->question_evaluation->removeElement($questionEvaluation);
 
