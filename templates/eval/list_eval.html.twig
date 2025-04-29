@@ -24,6 +24,7 @@
         <div class="list-eval">
             <div class="contenu">
                 <ul class="list-item">
+<<<<<<< Updated upstream
                     <a class="question-card" id="myBtn">
                         <li>
                             <p class="enonce-question"> Evaluation BDD - CIR1</p>
@@ -218,11 +219,43 @@
                             </div>
                         </div>
                     </li>
+=======
+                    {% for eval in evaluation %}
+                        {% if eval.IsActive == 1 %}
+                            <a class="question-card" href="{{ path('app_eval_modifier', {id: eval.id}) }}">
+                                <li>
+                                    <p class="enonce-question"> {{ eval.titre }}</p>
+                                    <div class="param-question">
+                                        <div class="type">
+                                            <p class="nom">Nombre de questions :</p>
+                                            <p class="contenu-nom">30</p>
+                                        </div>
+            
+                                        <div class="diff">
+                                            <p class="nom">Date :</p>
+                                            <p class="contenu-nom">30/04/2022</p>
+                                        </div>
+                                    </div>
+                                    <div class="param-question">
+                                        <div class="chapitre">
+                                            <p class="nom">Chapitre :</p>
+                                            <p class="contenu-nom">qsdfghjklkjhgfdsqSDFGHJJHGFDSQSD</p>
+                                        </div>
+                                        <div class="theme">
+                                            <p class="nom">Thème :</p>
+                                            <p class="contenu-nom">{{ eval.ThemeEval.contenu }}</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </a>
+                        {% endif %}                        
+                    {% endfor %}
+>>>>>>> Stashed changes
                 </ul>
             </div>
         </div>
         <div class="boutton-eval">
-            <a class="ajout-eval" href="{{ path('app_eval_gen') }}">Nouvelle évaluation</a>
+            <a class="ajout-eval" href="{{ path('app_eval_ajouter') }}">Nouvelle évaluation</a>
         </div>
 
     </main>

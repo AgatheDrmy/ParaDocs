@@ -1,0 +1,205 @@
+{% extends "base.html.twig" %}
+
+
+{% block head %}
+    <meta charset="UTF-8">
+
+    <title>ParaDocs</title>
+
+    <!--CSS-->
+    {% block css %}
+    <link rel="stylesheet" href="{{ asset('assets/CSS/navbar.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/comp_gen_eval.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/choix_question_eval.css')}}">
+    {% endblock %}
+
+
+
+{% endblock %}
+
+{% block body %}
+    
+    <header>
+    {% include "_partials/_navbar.html.twig" %}
+    </header>
+
+    <main>
+        <h2>Créer une évaluation</h2>
+        <h3>Choisir les composantes génériques</h3>
+        {{ dump(evalForm) }}
+        <div class="page">
+            <div class="contenu">
+                {{ form_start(evalForm) }}
+                <div class="texte">
+                    <label for="{{evalForm.titre.vars.id}}" class="element">Choississez un titre pour l'évaluation :</label>
+                    {% if evalForm.titre.vars.data is not null %}
+                        <textarea placeholder="Ajoutez un texte..."  name="{{ evalForm.titre.vars.full_name }}" id="{{evalForm.titre.vars.id}}" class="rempli-c"> {{evaluation.titre}} </textarea>
+                    {% else %}
+                        <textarea placeholder="Ajoutez un texte..." name="{{ evalForm.titre.vars.full_name }}" id="{{evalForm.titre.vars.id}}" class="rempli-c" ></textarea>
+                    {% endif %}
+
+                    {{ form_errors(evalForm.titre) }}
+                    {% do evalForm.titre.setRendered %}
+                </div>
+                <div class="time">
+                    <div class="date_heure">
+                        {% if evalForm.titre.vars.data is not null %}
+                            <label for="{{evalForm.date_heure.vars.id}}" class="element">Date et heure d'évaluation :</label>
+                            <input type="datetime-local" name="{{ evalForm.date_heure.vars.full_name }}" id="{{evalForm.date_heure.vars.id}}" value="{{evaluation.DateHeure|date('Y-m-d\\TH:i')}}">
+                        {% else %}
+                            <label for="{{evalForm.date_heure.vars.id}}" class="element">Date et heure d'évaluation :</label>
+                            <input type="datetime-local" name="{{ evalForm.date_heure.vars.full_name }}" id="{{evalForm.date_heure.vars.id}}" >
+                        {% endif %}
+                        {{ form_errors(evalForm.date_heure) }}
+                        {% do evalForm.date_heure.setRendered %}
+                    </div>
+                    <div class="date_heure">
+                        {% if evalForm.titre.vars.data is not null %}
+                            <label for="{{evalForm.duree.vars.id}}" class="element">Durée de l'évaluation :</label>
+                            <input type="time" name="{{ evalForm.duree.vars.full_name }}" id="{{evalForm.duree.vars.id}}" value="{{evaluation.duree|date('TH:i')}}">
+                        {% else %}
+                            <label for="{{evalForm.duree.vars.id}}" class="element">Date et heure d'évaluation :</label>
+                            <input type="time" name="{{ evalForm.duree.vars.full_name }}" id="{{evalForm.duree.vars.id}}" >
+                        {% endif %}
+                        {{ form_errors(evalForm.duree) }}
+                        {% do evalForm.duree.setRendered %}
+                    </div>
+                </div>
+                <div class="les-mods">
+                    <h4>Choissir les modalitées :</h4>
+                    <div class="mod-row">
+                        <div class="mod-col">
+                            <div class="mod">
+                                <p>Calculatrice :</p>
+                                <label>Oui</label>
+                                <input type="radio" name="ouinon-calc" value="oui">
+                                <label>Non</label>
+                                <input type="radio" name="ouinon-calc" value="non">
+                            </div>
+                            <div class="mod">
+                                <p>Ordinateur :</p>
+                                <label>Oui</label>
+                                <input type="radio" name="ouinon-ordi" value="oui">
+                                <label>Non</label>
+                                <input type="radio" name="ouinon-ordi" value="non">
+                            </div>
+                        </div>
+                        <div class="mod-col">
+                            <div class="mod">
+                                <p>Document :</p>
+                                <label>Oui</label>
+                                <input type="radio" name="ouinon-doc" value="oui">
+                                <label>Non</label>
+                                <input type="radio" name="ouinon-doc" value="non">
+                            </div>
+                            <div class="mod-autre">
+                                <p>Autre :</p>
+                                <input type="text" class="rempli-c" placeholder="Ajouter une nouvelle modalité si besoin ...">                        
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="texte">
+                    <h4>Texte d'introduction :</h4>
+                    <textarea placeholder="Ajoutez un texte..." class="rempli-c"></textarea>
+                </div>
+                <div class="texte">
+                    <h4>Nombre de questions dans l'évaluation :</h4>
+                    <input type="text" class="rempli-c nombre" placeholder="Entrer un nombre ...">
+                </div>
+                <div class="texte">
+                    <h4>Nombre de copies :</h4>
+                    <input type="text" class="rempli-c nombre" placeholder="Entrer un nombre ...">
+                </div>
+                <h3>Choissir les questions</h3>
+                <button class="rempli-c">Tout sélectionner</button>
+                <div class="tab-question">
+                    <div class="entete">
+                        <details>
+                            <summary>Chapitre :</summary>
+                                <fieldset>
+                                    <ul>
+                                        <li><input type="checkbox"><label>auto</label></li>
+                                        <li><input type="checkbox"><label>auto</label></li>
+                                    </ul>
+                                </fieldset>
+                        </details>
+                        <details>
+                            <summary>Thème :</summary>
+                                <fieldset>
+                                    <ul>
+                                        <li><input type="checkbox"><label>auto</label></li>
+                                        <li><input type="checkbox"><label>auto</label></li>
+                                    </ul>
+                                </fieldset>
+                        </details>
+                        <details>
+                            <summary>Type :</summary>
+                                <fieldset>
+                                    <ul>
+                                        <li><input type="checkbox"><label>auto</label></li>
+                                        <li><input type="checkbox"><label>auto</label></li>
+                                    </ul>
+                                </fieldset>
+                        </details>
+                        <details>
+                            <summary>Difficulté :</summary>
+                                <fieldset>
+                                    <ul>
+                                        <li><input type="checkbox"><label>auto</label></li>
+                                        <li><input type="checkbox"><label>auto</label></li>
+                                    </ul>
+                                </fieldset>
+                        </details>
+                        <div class="search-button">
+                            <input type="search" id="site-search" placeholder="Rechercher par mot..." />
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-search" viewBox="0 0 16 16">
+                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                            </svg>
+                        </div>
+                        <button class="rempli">Filtrer</button>
+                    </div>
+                        
+
+                    <div class="contenu">
+                        <ul class="list-item">
+                            {% for q in question %}
+                                {% if q.IsActive == 1 %}
+                                    <li>
+                                        <input type="checkbox">
+                                        <p class="enonce-question">{{ q.enonce }}</p>
+                                        <div class="param-question">
+                                            <div class="type">
+                                                <p class="nom">Type :</p>
+                                                <p class="contenu-nom">{{ q.TypeQuestion.libelle }}</p>
+                                            </div>
+
+                                            <div class="diff">
+                                                <p class="nom">Difficulté :</p>
+                                                <p class="contenu-nom">{{ q.difficulte.libelle }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="param-question">
+                                            <div class="chapitre">
+                                                <p class="nom">Chapitre :</p>
+                                                <p class="contenu-nom">{{ q.Chapitre.contenu }}</p>
+                                            </div>
+                                            <div class="theme">
+                                                <p class="nom">Thème :</p>
+                                                <p class="contenu-nom">{{ q.Chapitre.Theme.contenu }}</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div> 
+                <div class="ret-suiv">
+                    <button class="vide-c">Retour</button>
+                    {# <a class="vide-c" href="{{ path('app_eval_ajouter') }}">Suivant</a> #}
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
