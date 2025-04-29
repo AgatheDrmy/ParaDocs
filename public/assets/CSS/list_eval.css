@@ -1,0 +1,102 @@
+
+
+
+h2{
+    text-align: center;
+    margin-top: 5vh;
+    margin-bottom: 3vh;
+}
+
+h3{
+    text-align: center;
+    margin-bottom : 5vh;
+}
+
+
+div.list-eval{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    row-gap: 0vw;
+    align-items: center;
+}
+
+
+/*A suuuuuuupppppppppreeeeeee si toujours pas de borduuuuuuuuuuuuuuuure*/
+div.contenu{
+    border-style: none;
+    border-width: 1px;
+    border-color: #D64551;
+}
+
+.contenu ul{
+    width: 85vw;
+    height: 37vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    row-gap: 1vw;
+    align-items: center;
+    margin-right: 0vw;
+    padding-left:2vw;
+    padding-right: 2vw;
+    overflow-y: scroll;
+    scrollbar-color: #E7E6E6 #F8F8F8;
+    scrollbar-width: thin;
+}
+
+.contenu .list-item li{
+    list-style: none;
+    width: 80vw;
+    background-color: #E7E6E6;
+    border-radius: 10px;
+    padding-left: 1.5vw;
+    padding-right: 1.5vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    column-gap: 3vh;
+}
+
+
+div.param-question div{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    column-gap: 1vh;
+}
+
+.enonce-question{
+    width: 30vw;
+}
+
+p.nom{
+    color: #6EA5BE;
+}
+
+a.question-card{
+    color:#000000;
+    text-decoration: none;
+}
+
+
+a.ajout-eval{
+    border: 2px solid;
+    border-radius: 6px;
+    border-color: #6EA5BE;
+    padding-left: 37.5vw;
+    padding-right: 37vw;
+    padding-top: 4vh;
+    padding-bottom: 4vh;
+    margin-top: 2vh;
+    background-color: #ffffff;
+    color:#6EA5BE;
+    font-size: large;
+    text-decoration: none;
+
+}
+
+div.boutton-eval{
+    display: flex;
+    justify-content: center;
+}

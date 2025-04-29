@@ -23,7 +23,7 @@
 
 {% block body %}
     <header>
-    
+    {% include "_partials/_navbar.html.twig" %}
     </header>
 
     <main>
@@ -76,239 +76,40 @@
                     </svg>
                 </div>
                 <button class="rempli">Filtrer</button>
-                <button class="rempli">Ajouter une question</button>
             </div>
                 
 
             <div class="contenu">
                 <ul class="list-item">
-                    <a class="question-card" id="myBtn">
-                        <li>
-                            <input type="checkbox">
-                            <p class="enonce-question">Qu’est ce qui permet au bases de données d’etres utilisé de facon proéminantes par les industriels de nos jours? en sachant qu’elles sont utilisées par IKEA, Zara, Super U et ...</p>
-                            <div class="param-question">
-                                <div class="type">
-                                    <p class="nom">Type :</p>
-                                    <p class="contenu-nom">QCM</p>
+                    {% for q in question %}
+                        {% if q.IsActive == 1 %}
+                            <li>
+                                <input type="checkbox">
+                                <p class="enonce-question">{{ q.enonce }}</p>
+                                <div class="param-question">
+                                    <div class="type">
+                                        <p class="nom">Type :</p>
+                                        <p class="contenu-nom">{{ q.TypeQuestion.libelle }}</p>
+                                    </div>
+
+                                    <div class="diff">
+                                        <p class="nom">Difficulté :</p>
+                                        <p class="contenu-nom">{{ q.difficulte.libelle }}</p>
+                                    </div>
                                 </div>
-
-                                <div class="diff">
-                                    <p class="nom">Difficulté :</p>
-                                    <p class="contenu-nom">3</p>
+                                <div class="param-question">
+                                    <div class="chapitre">
+                                        <p class="nom">Chapitre :</p>
+                                        <p class="contenu-nom">{{ q.Chapitre.contenu }}</p>
+                                    </div>
+                                    <div class="theme">
+                                        <p class="nom">Thème :</p>
+                                        <p class="contenu-nom">{{ q.Chapitre.Theme.contenu }}</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="param-question">
-                                <div class="chapitre">
-                                    <p class="nom">Chapitre :</p>
-                                    <p class="contenu-nom">qsdfghjklkjhgfdsqSDFGHJJHGFDSQSD</p>
-                                </div>
-                                <div class="theme">
-                                    <p class="nom">Thème :</p>
-                                    <p class="contenu-nom">qzsfdghjkimgyeqezqfwdgbyj</p>
-                                </div>
-                            </div>
-                        </li>
-                    </a>
-                    <li>
-                        <input type="checkbox">
-                        <p class="enonce-question">Qu’est ce qui permet au bases de données d’etres utilisé de facon proéminantes par les industriels de nos jours? en sachant qu’elles sont utilisées par IKEA, Zara, Super U et ...</p>
-                        <div class="param-question">
-                            <div class="type">
-                                <p class="nom">Type :</p>
-                                <p class="contenu-nom">QCM</p>
-                            </div>
-
-                            <div class="diff">
-                                <p class="nom">Difficulté :</p>
-                                <p class="contenu-nom">3</p>
-                            </div>
-                        </div>
-                        <div class="param-question">
-                            <div class="chapitre">
-                                <p class="nom">Chapitre :</p>
-                                <p class="contenu-nom">qsdfghjklkjhgfdsqSDFGHJJHGFDSQSD</p>
-                            </div>
-                            <div class="theme">
-                                <p class="nom">Thème :</p>
-                                <p class="contenu-nom">qzsfdghjkimgyeqezqfwdgbyj</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <input type="checkbox">
-                        <p class="enonce-question">Qu’est ce qui permet au bases de données d’etres utilisé de facon proéminantes par les industriels de nos jours? en sachant qu’elles sont utilisées par IKEA, Zara, Super U et ...</p>
-                        <div class="param-question">
-                            <div class="type">
-                                <p class="nom">Type :</p>
-                                <p class="contenu-nom">QCM</p>
-                            </div>
-
-                            <div class="diff">
-                                <p class="nom">Difficulté :</p>
-                                <p class="contenu-nom">3</p>
-                            </div>
-                        </div>
-                        <div class="param-question">
-                            <div class="chapitre">
-                                <p class="nom">Chapitre :</p>
-                                <p class="contenu-nom">qsdfghjklkjhgfdsqSDFGHJJHGFDSQSD</p>
-                            </div>
-                            <div class="theme">
-                                <p class="nom">Thème :</p>
-                                <p class="contenu-nom">qzsfdghjkimgyeqezqfwdgbyj</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <input type="checkbox">
-                        <p class="enonce-question">Qu’est ce qui permet au bases de données d’etres utilisé de facon proéminantes par les industriels de nos jours? en sachant qu’elles sont utilisées par IKEA, Zara, Super U et ...</p>
-                        <div class="param-question">
-                            <div class="type">
-                                <p class="nom">Type :</p>
-                                <p class="contenu-nom">QCM</p>
-                            </div>
-
-                            <div class="diff">
-                                <p class="nom">Difficulté :</p>
-                                <p class="contenu-nom">3</p>
-                            </div>
-                        </div>
-                        <div class="param-question">
-                            <div class="chapitre">
-                                <p class="nom">Chapitre :</p>
-                                <p class="contenu-nom">qsdfghjklkjhgfdsqSDFGHJJHGFDSQSD</p>
-                            </div>
-                            <div class="theme">
-                                <p class="nom">Thème :</p>
-                                <p class="contenu-nom">qzsfdghjkimgyeqezqfwdgbyj</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <input type="checkbox">
-                        <p class="enonce-question">Qu’est ce qui permet au bases de données d’etres utilisé de facon proéminantes par les industriels de nos jours? en sachant qu’elles sont utilisées par IKEA, Zara, Super U et ...</p>
-                        <div class="param-question">
-                            <div class="type">
-                                <p class="nom">Type :</p>
-                                <p class="contenu-nom">QCM</p>
-                            </div>
-
-                            <div class="diff">
-                                <p class="nom">Difficulté :</p>
-                                <p class="contenu-nom">3</p>
-                            </div>
-                        </div>
-                        <div class="param-question">
-                            <div class="chapitre">
-                                <p class="nom">Chapitre :</p>
-                                <p class="contenu-nom">qsdfghjklkjhgfdsqSDFGHJJHGFDSQSD</p>
-                            </div>
-                            <div class="theme">
-                                <p class="nom">Thème :</p>
-                                <p class="contenu-nom">qzsfdghjkimgyeqezqfwdgbyj</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <input type="checkbox">
-                        <p class="enonce-question">Qu’est ce qui permet au bases de données d’etres utilisé de facon proéminantes par les industriels de nos jours? en sachant qu’elles sont utilisées par IKEA, Zara, Super U et ...</p>
-                        <div class="param-question">
-                            <div class="type">
-                                <p class="nom">Type :</p>
-                                <p class="contenu-nom">QCM</p>
-                            </div>
-
-                            <div class="diff">
-                                <p class="nom">Difficulté :</p>
-                                <p class="contenu-nom">3</p>
-                            </div>
-                        </div>
-                        <div class="param-question">
-                            <div class="chapitre">
-                                <p class="nom">Chapitre :</p>
-                                <p class="contenu-nom">qsdfghjklkjhgfdsqSDFGHJJHGFDSQSD</p>
-                            </div>
-                            <div class="theme">
-                                <p class="nom">Thème :</p>
-                                <p class="contenu-nom">qzsfdghjkimgyeqezqfwdgbyj</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <input type="checkbox">
-                        <p class="enonce-question">Qu’est ce qui permet au bases de données d’etres utilisé de facon proéminantes par les industriels de nos jours? en sachant qu’elles sont utilisées par IKEA, Zara, Super U et ...</p>
-                        <div class="param-question">
-                            <div class="type">
-                                <p class="nom">Type :</p>
-                                <p class="contenu-nom">QCM</p>
-                            </div>
-
-                            <div class="diff">
-                                <p class="nom">Difficulté :</p>
-                                <p class="contenu-nom">3</p>
-                            </div>
-                        </div>
-                        <div class="param-question">
-                            <div class="chapitre">
-                                <p class="nom">Chapitre :</p>
-                                <p class="contenu-nom">qsdfghjklkjhgfdsqSDFGHJJHGFDSQSD</p>
-                            </div>
-                            <div class="theme">
-                                <p class="nom">Thème :</p>
-                                <p class="contenu-nom">qzsfdghjkimgyeqezqfwdgbyj</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <input type="checkbox">
-                        <p class="enonce-question">Qu’est ce qui permet au bases de données d’etres utilisé de facon proéminantes par les industriels de nos jours? en sachant qu’elles sont utilisées par IKEA, Zara, Super U et ...</p>
-                        <div class="param-question">
-                            <div class="type">
-                                <p class="nom">Type :</p>
-                                <p class="contenu-nom">QCM</p>
-                            </div>
-
-                            <div class="diff">
-                                <p class="nom">Difficulté :</p>
-                                <p class="contenu-nom">3</p>
-                            </div>
-                        </div>
-                        <div class="param-question">
-                            <div class="chapitre">
-                                <p class="nom">Chapitre :</p>
-                                <p class="contenu-nom">qsdfghjklkjhgfdsqSDFGHJJHGFDSQSD</p>
-                            </div>
-                            <div class="theme">
-                                <p class="nom">Thème :</p>
-                                <p class="contenu-nom">qzsfdghjkimgyeqezqfwdgbyj</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <input type="checkbox">
-                        <p class="enonce-question">Qu’est ce qui permet au bases de données d’etres utilisé de facon proéminantes par les industriels de nos jours? en sachant qu’elles sont utilisées par IKEA, Zara, Super U et ...</p>
-                        <div class="param-question">
-                            <div class="type">
-                                <p class="nom">Type :</p>
-                                <p class="contenu-nom">QCM</p>
-                            </div>
-
-                            <div class="diff">
-                                <p class="nom">Difficulté :</p>
-                                <p class="contenu-nom">3</p>
-                            </div>
-                        </div>
-                        <div class="param-question">
-                            <div class="chapitre">
-                                <p class="nom">Chapitre :</p>
-                                <p class="contenu-nom">qsdfghjklkjhgfdsqSDFGHJJHGFDSQSD</p>
-                            </div>
-                            <div class="theme">
-                                <p class="nom">Thème :</p>
-                                <p class="contenu-nom">qzsfdghjkimgyeqezqfwdgbyj</p>
-                            </div>
-                        </div>
-                    </li>
+                            </li>
+                        {% endif %}
+                     {% endfor %}
                 </ul>
             </div>
         </div> 

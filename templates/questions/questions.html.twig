@@ -1,0 +1,145 @@
+{% extends "base.html.twig" %}
+
+{% block head %}
+    <meta charset="UTF-8">
+    <meta name='viewport' content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}Accueil{% endblock %} - ParaDocs</title>
+
+    <!--CSS-->
+    {% block css %}
+    <link rel="stylesheet" href="{{ asset('assets/CSS/navbar.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/style_m_d.css')}}">
+    {% endblock %}
+
+    <!--JS-->
+    {% block javascripts %}
+    <script src="{{ asset('assets/Js/modif_data.js') }}" defer></script>
+    {% endblock %}
+
+{% endblock %}
+
+
+{% block body %}
+
+    <header>
+    {% include "_partials/_navbar.html.twig" %}
+    </header>
+
+    <main>
+        <div class="modal-content">
+            <span class="close-mine">&times;</span>
+            <h3>Modifier la question</h3>
+
+            {{ form_start(questionForm) }}
+                <div class="info-question">
+                    <div class="info" id="type">
+                        <label for="{{questionForm.type_question.vars.id}}" class="element">Type :</label>
+                        <select id="{{questionForm.type_question.vars.id}}" name="{{ questionForm.type_question.vars.full_name }}">
+                        {% if questionForm.enonce.vars.data is not null %}
+                            {% for t in type %}
+                                <option value="{{t.id}}" name="{{ questionForm.type_question.vars.full_name }}"  
+                                    {% if question.TypeQuestion.id == t.id %}
+                                        selected
+                                    {% endif %}     
+                                >{{t.libelle}}</option>
+                            {% endfor %}
+                        {% else %}
+                            {% for t in type %}
+                                <option   value="{{t.id}}" >{{t.libelle}}</option>
+                            {% endfor %}
+                        {% endif %}
+                        </select>
+                        {{ form_errors(questionForm.type_question)}}
+                        {% do questionForm.type_question.setRendered %}
+                    </div>
+                    <div class="info" id="theme">
+                        <label for="{{questionForm.chapitre.vars.id}}" class="element">Chapitre :</label>
+                        <div class="choix-chap-them">
+                            <ul class="list-chap-them">
+                                {% if questionForm.enonce.vars.data is not null %}
+                                    {% for c in chapitre %}
+                                        <li>
+                                            <input type="radio" id="{{questionForm.chapitre.vars.id}}" value="{{ c.id }}" name="{{ questionForm.chapitre.vars.full_name }}"
+                                                {% if question.Chapitre.id == c.id %}
+                                                    checked
+                                                {% endif %}
+                                            >
+                                            <p>{{ c.contenu }}</p>
+                                        </li>
+                                    {% endfor %}  
+                                {% else %}
+                                    {% for c in chapitre %}
+                                        <li>
+                                            <input type="radio" id="{{questionForm.chapitre.vars.id}}" value="{{ c.id }}" name="{{ questionForm.chapitre.vars.full_name }} ">
+                                            <p>{{ c.contenu }}</p>
+                                        </li>
+                                    {% endfor %}
+                                {% endif %}
+                            </ul>
+                            {{ form_errors(questionForm.chapitre)}}
+                            {% do questionForm.chapitre.setRendered %}
+                        </div>
+                    </div>
+                    <div class="info" id="enonce">
+                        <label for="{{questionForm.enonce.vars.id}}" class="element">Enoncé :</label>
+                        {% if questionForm.enonce.vars.data is not null %}
+                            <textarea placeholder="Ajoutez un texte..."  name="{{ questionForm.enonce.vars.full_name }}" id="{{questionForm.enonce.vars.id}}" class="enonce"> {{question.enonce}} </textarea>
+                        {% else %}
+                            <textarea placeholder="Ajoutez un texte..." name="{{ questionForm.enonce.vars.full_name }}" id="{{questionForm.enonce.vars.id}}" class="enonce" ></textarea>
+                        {% endif %}
+
+                        {{ form_errors(questionForm.enonce) }}
+                        {% do questionForm.enonce.setRendered %}
+                    </div>
+                    <div class="info" id="reponses">
+                        <p class="element">Réponses :</p>
+                        <textarea placeholder="Ajoutez un texte..." class="reponses"></textarea>
+                        <textarea placeholder="Ajoutez un texte..." class="reponses"></textarea>
+                        <button class="bouton-vide">Ajouter une réponse</button>
+                    </div>
+                    <div class="info" id="difficulte">
+                        <label for="{{questionForm.difficulte.vars.id}}" class="element">Difficulté :</label>
+                        <select id="{{questionForm.difficulte.vars.id}}" name="{{ questionForm.difficulte.vars.full_name }}">
+                            {% if questionForm.enonce.vars.data is not null %}
+                                    {% for d in difficulte %}
+                                        <option value="{{d.id}}"   
+                                        {% if question.Difficulte.id == d.id %}
+                                            selected
+                                        {% endif %}     
+                                        >{{d.libelle}}</option>
+                                    {% endfor %}
+                            {% else %}
+                                
+                                {% for d in difficulte %}
+                                    <option  value="{{d.id}}">{{d.libelle}}</option>
+                                {% endfor %}
+
+                            {% endif %}
+                        </select>
+
+                        {{ form_errors(questionForm.difficulte) }}
+                        {% do questionForm.difficulte.setRendered %}
+                    </div>
+                    <div class="sauv-suppr">
+                        <button class="rempli-c" type="submit">Sauvegarder</button>
+                        <button class="suppr">Supprimer la question(désactiver)</button>
+                    </div>
+                    
+                </div>
+            {{ form_end(questionForm) }}
+
+            {#                
+                
+                
+                
+                <div class="info" id="image-question">
+                    <button class="bouton-vide">Ajouter une image</button>
+                </div>
+                #}
+                
+            
+        </div>
+    </main>
+
+{% endblock %}

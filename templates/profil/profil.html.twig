@@ -28,40 +28,62 @@
                 <div class="cote-a-cote">
                     <div class="texte">
                         <p>Nom :</p>
-                        <input type="text" placeholder="Neige">
+                        <input type="text" value="{{ user.nom }}" readonly>
                     </div>
                     <div class="texte">
                         <p>Prénom :</p>
-                        <input type="text" placeholder="Gilbert">
+                        <input type="text" value="{{ user.prenom }}" readonly>
                     </div>
                 </div>
                 <div class="texte">
                     <p>Adresse mail :</p>
-                    <input type="text" placeholder="gilbert.neige@isen-ouest.yncrea.fr">
+                    <input type="text" value="{{ user.email }}" readonly>
                 </div>
                 <div class="texte">
                     <p>Mot de passe :</p>
-                    <button id="psw">************</button><!-- Attention c'est chelou faut modifier -->
-                    <button class="rempli">Changer le mot de passe</button>
+                    <form id="password-form" action="{{ path('update_password') }}" method="post">
+                        <div class="password-container">
+                            <input type="password" id="new-password" name="new_password" placeholder="Nouveau mot de passe" class="password-input">
+                            <br><br>
+                            <button type="submit" class="rempli">Changer le mot de passe</button>
+                        </div>
+                    </form>
                 </div>
                 <div class="cote-a-cote">
                     <div class="texte">
                         <p>Nombre d'évaluations créées :</p>
-                        <button>16</button>
+                        <button>{{ user.nbEval }}</button>
                     </div>
                     <div class="texte">
                         <p>Nombre de questions créées :</p>
-                        <button>56</button>
+                        <button>{{ user.nbQuestions }}</button>
                     </div>
                 </div>
             </div>
             <div class="photo-profil">
-                <div class="centrer"><img src = "../assets/imgs/image.jpg" class = "pdp"></div>
-                <div class="centrer"><h3>Gilbert Neige</h3></div>
-                <div class="centrer"><button class="rempli">Changer de photo de profil</button></div>
+                <div class="centrer">
+                    {% if user.photo %}
+                        <img src="{{ asset('uploads/photos/' ~ user.photo) }}" class="pdp">
+                    {% else %}
+                        <img src="{{ asset('uploads/photos/pier.png') }}" class="pdp">
+                    {% endif %}
+                </div>
+                <div class="centrer"><h3>{{ user.prenom }} {{ user.nom }}</h3></div>
+                <div class="centrer">
+                    <form id="photo-form" action="{{ path('update_profile_photo') }}" method="post" enctype="multipart/form-data">
+                        <button type="button" class="rempli" id="photo-trigger">Changer la photo de profil</button>
+                        <div style="width:0; height:0; overflow:hidden; visibility:hidden; position:absolute;">
+                            <input type="file" id="photo-input" name="photo" accept="image/*">
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
         
     </main>
 
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('assets/js/profil.js') }}"></script>
 {% endblock %}

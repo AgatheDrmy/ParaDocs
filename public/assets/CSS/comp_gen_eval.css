@@ -115,6 +115,7 @@ input.rempli-c::placeholder{
     color: #ffffff;
 }
 
+
 .rempli-c{
     width: 10vw;
     padding-top: 1vh;
@@ -127,6 +128,7 @@ input.rempli-c::placeholder{
     padding-right: 1vw; 
     width: 58vw;
     height: 2vh;
+
 }
 
 textarea{
@@ -140,6 +142,7 @@ textarea{
     padding-right: 0.5vw;
     width: 58vw;
     height: 10vh;
+
 }
   
 textarea::placeholder{

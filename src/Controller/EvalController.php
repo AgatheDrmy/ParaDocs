@@ -2,8 +2,6 @@
 
 namespace App\Controller;
 
-<<<<<<< Updated upstream
-=======
 use App\Entity\Evaluation;
 use App\Repository\TypeRepository;
 use App\Repository\DifficulteRepository;
@@ -17,7 +15,6 @@ use App\Form\EvalFormType;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
->>>>>>> Stashed changes
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -26,11 +23,9 @@ use Symfony\Component\Routing\Attribute\Route;
 class EvalController extends AbstractController
 {
     #[Route('/', name: 'list')]
-    public function list(): Response
+    public function list(EvaluationRepository $evaluationrepository)
     {
-        return $this->render('eval/list_eval.html.twig', [
-            'controller_name' => 'EvalController',
-        ]);
+        return $this->render('eval/list_eval.html.twig', ['evaluation' => $evaluationrepository->findBy([], ['id' => 'asc'])]);
     }
 
     #[Route('/{id}/modifier', name: 'modifier')]
@@ -69,14 +64,6 @@ class EvalController extends AbstractController
         ]);
     }
 
-<<<<<<< Updated upstream
-    #[Route('/choix', name: 'choix')]
-    public function choix(): Response
-    {
-        return $this->render('eval/choix_question_eval.html.twig', [
-            'controller_name' => 'EvalController',
-        ]);
-=======
 
     #[Route('/ajouter', name: 'ajouter')]
     public function Addeval(Request $request, EntityManagerInterface $em, 
@@ -116,7 +103,6 @@ class EvalController extends AbstractController
             'question' => $questionrepository->findBy([], ['id' => 'asc'])
         ]);
 
->>>>>>> Stashed changes
     }
 
 }
