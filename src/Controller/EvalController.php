@@ -50,7 +50,7 @@ class EvalController extends AbstractController
 
             $this -> addFlash('success', 'question créée');
 
-            return $this->redirectToRoute('apphome');
+            return $this->redirectToRoute('app_eval_list');
         }
 
         return $this->render('eval/evaluation.html.twig', [
@@ -82,6 +82,7 @@ class EvalController extends AbstractController
 
         $evaluations->setEvaluationUtilisateur($utilisateurrepository->find(1));
         $evaluations->setIsActive(1);
+        $evaluations->setDateCreation(new \DateTimeImmutable('now'));
 
         $evalForm->handleRequest($request);
 
@@ -91,7 +92,7 @@ class EvalController extends AbstractController
 
             $this -> addFlash('success', 'question créée');
 
-            return $this->redirectToRoute('apphome');
+            return $this->redirectToRoute('app_eval_list');
         }
         
         return $this->render('eval/evaluation.html.twig', [

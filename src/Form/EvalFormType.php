@@ -26,13 +26,13 @@ class EvalFormType extends AbstractType
             ->add('date_heure', null, [
                 'widget' => 'single_text',
             ])
-            ->add('date_creation', null, [
-                'widget' => 'single_text',
-            ])
+            // ->add('date_creation', null, [
+            //     'widget' => 'single_text',
+            // ])
             ->add('duree', null, [
                 'widget' => 'single_text',
             ])
-            ->add('is_active')
+            // ->add('is_active')
             ->add('theme_eval', EntityType::class, [
                 'class' => theme::class,
                 'choice_label' => 'id',
@@ -41,10 +41,10 @@ class EvalFormType extends AbstractType
                 'class' => difficulte::class,
                 'choice_label' => 'id',
             ])
-            ->add('evaluation_utilisateur', EntityType::class, [
-                'class' => utilisateur::class,
-                'choice_label' => 'id',
-            ])
+            // ->add('evaluation_utilisateur', EntityType::class, [
+            //     'class' => utilisateur::class,
+            //     'choice_label' => 'id',
+            // ])
             ->add('question_evaluation', EntityType::class, [
                 'class' => question::class,
                 'choice_label' => 'id',

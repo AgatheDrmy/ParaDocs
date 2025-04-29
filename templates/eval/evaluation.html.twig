@@ -26,7 +26,6 @@
     <main>
         <h2>Créer une évaluation</h2>
         <h3>Choisir les composantes génériques</h3>
-        {{ dump(evalForm) }}
         <div class="page">
             <div class="contenu">
                 {{ form_start(evalForm) }}
@@ -56,7 +55,7 @@
                     <div class="date_heure">
                         {% if evalForm.titre.vars.data is not null %}
                             <label for="{{evalForm.duree.vars.id}}" class="element">Durée de l'évaluation :</label>
-                            <input type="time" name="{{ evalForm.duree.vars.full_name }}" id="{{evalForm.duree.vars.id}}" value="{{evaluation.duree|date('TH:i')}}">
+                            <input type="time" name="{{ evalForm.duree.vars.full_name }}" id="{{evalForm.duree.vars.id}}" value="{{evaluation.duree|date('H:i')}}">
                         {% else %}
                             <label for="{{evalForm.duree.vars.id}}" class="element">Date et heure d'évaluation :</label>
                             <input type="time" name="{{ evalForm.duree.vars.full_name }}" id="{{evalForm.duree.vars.id}}" >
@@ -70,38 +69,128 @@
                     <div class="mod-row">
                         <div class="mod-col">
                             <div class="mod">
-                                <p>Calculatrice :</p>
-                                <label>Oui</label>
-                                <input type="radio" name="ouinon-calc" value="oui">
-                                <label>Non</label>
-                                <input type="radio" name="ouinon-calc" value="non">
+                                <label>Calculatrice :</label>
+                                {% if evalForm.is_calculatrice.vars.data is not null %}
+                                    <label for="{{ evalForm.is_calculatrice.vars.id }}_1">Oui</label>
+                                    <input type="radio"
+                                        id="{{ evalForm.is_calculatrice.vars.id }}_1"
+                                        name="{{ evalForm.is_calculatrice.vars.full_name }}"
+                                        value="1"
+                                        {% if evalForm.is_calculatrice.vars.data == 1 %}checked{% endif %}>
+
+                                    <label for="{{ evalForm.is_calculatrice.vars.id }}_0">Non</label>
+                                    <input type="radio"
+                                        id="{{ evalForm.is_calculatrice.vars.id }}_0"
+                                        name="{{ evalForm.is_calculatrice.vars.full_name }}"
+                                        value="0"
+                                        {% if evalForm.is_calculatrice.vars.data == 0 %}checked{% endif %}>
+                                {% else %}
+                                    <label for="{{ evalForm.is_calculatrice.vars.id }}_1">Oui</label>
+                                    <input type="radio"
+                                        id="{{ evalForm.is_calculatrice.vars.id }}_1"
+                                        name="{{ evalForm.is_calculatrice.vars.full_name }}"
+                                        value="1">
+
+                                    <label for="{{ evalForm.is_calculatrice.vars.id }}_0">Non</label>
+                                    <input type="radio"
+                                        id="{{ evalForm.is_calculatrice.vars.id }}_0"
+                                        name="{{ evalForm.is_calculatrice.vars.full_name }}"
+                                        value="0">
+                                {% endif %}
+                                {{ form_errors(evalForm.is_calculatrice) }}
+                                {% do evalForm.is_calculatrice.setRendered %}
                             </div>
                             <div class="mod">
-                                <p>Ordinateur :</p>
-                                <label>Oui</label>
-                                <input type="radio" name="ouinon-ordi" value="oui">
-                                <label>Non</label>
-                                <input type="radio" name="ouinon-ordi" value="non">
+                                <label>Document :</label>
+                                {% if evalForm.titre.vars.data is not null %}
+                                    <label for="{{ evalForm.is_document.vars.id }}_1">Oui</label>
+                                    <input type="radio"
+                                        id="{{ evalForm.is_document.vars.id }}_1"
+                                        name="{{ evalForm.is_document.vars.full_name }}"
+                                        value="1"
+                                        {% if evalForm.is_document.vars.data == 1 %}checked{% endif %}>
+
+                                    <label for="{{ evalForm.is_document.vars.id }}_0">Non</label>
+                                    <input type="radio"
+                                        id="{{ evalForm.is_document.vars.id }}_0"
+                                        name="{{ evalForm.is_document.vars.full_name }}"
+                                        value="0"
+                                        {% if evalForm.is_document.vars.data == 0 %}checked{% endif %}>
+                                {% else %}
+                                    <label for="{{ evalForm.is_document.vars.id }}_1">Oui</label>
+                                    <input type="radio"
+                                        id="{{ evalForm.is_document.vars.id }}_1"
+                                        name="{{ evalForm.is_document.vars.full_name }}"
+                                        value="1">
+
+                                    <label for="{{ evalForm.is_document.vars.id }}_0">Non</label>
+                                    <input type="radio"
+                                        id="{{ evalForm.is_document.vars.id }}_0"
+                                        name="{{ evalForm.is_document.vars.full_name }}"
+                                        value="0">
+                                {% endif %}
+                                {{ form_errors(evalForm.is_document) }}
+                                {% do evalForm.is_document.setRendered %}
                             </div>
                         </div>
                         <div class="mod-col">
                             <div class="mod">
-                                <p>Document :</p>
-                                <label>Oui</label>
-                                <input type="radio" name="ouinon-doc" value="oui">
-                                <label>Non</label>
-                                <input type="radio" name="ouinon-doc" value="non">
+                                <label>Ordinateur :</label>
+                                {% if evalForm.titre.vars.data is not null %}
+                                    <label for="{{ evalForm.is_ordinateur.vars.id }}_1">Oui</label>
+                                    <input type="radio"
+                                        id="{{ evalForm.is_ordinateur.vars.id }}_1"
+                                        name="{{ evalForm.is_ordinateur.vars.full_name }}"
+                                        value="1"
+                                        {% if evalForm.is_ordinateur.vars.data == 1 %}checked{% endif %}>
+
+                                    <label for="{{ evalForm.is_ordinateur.vars.id }}_0">Non</label>
+                                    <input type="radio"
+                                        id="{{ evalForm.is_ordinateur.vars.id }}_0"
+                                        name="{{ evalForm.is_ordinateur.vars.full_name }}"
+                                        value="0"
+                                        {% if evalForm.is_ordinateur.vars.data == 0 %}checked{% endif %}>
+                                {% else %}
+                                    <label for="{{ evalForm.is_ordinateur.vars.id }}_1">Oui</label>
+                                    <input type="radio"
+                                        id="{{ evalForm.is_ordinateur.vars.id }}_1"
+                                        name="{{ evalForm.is_ordinateur.vars.full_name }}"
+                                        value="1">
+
+                                    <label for="{{ evalForm.is_ordinateur.vars.id }}_0">Non</label>
+                                    <input type="radio"
+                                        id="{{ evalForm.is_ordinateur.vars.id }}_0"
+                                        name="{{ evalForm.is_ordinateur.vars.full_name }}"
+                                        value="0">
+                                {% endif %}
+                                {{ form_errors(evalForm.is_ordinateur) }}
+                                {% do evalForm.is_ordinateur.setRendered %}
                             </div>
                             <div class="mod-autre">
-                                <p>Autre :</p>
-                                <input type="text" class="rempli-c" placeholder="Ajouter une nouvelle modalité si besoin ...">                        
+                                {% if evalForm.titre.vars.data is not null %}
+                                    <label for="{{evalForm.autre_modalite.vars.id}}">Autre :</label>
+                                    <input type="text" name="{{ evalForm.autre_modalite.vars.full_name }}" id="{{evalForm.autre_modalite.vars.id}}" value="{{evaluation.AutreModalite}}" class="rempli-c">
+                                {% else %}
+                                    <label for="{{evalForm.autre_modalite.vars.id}}">Autre :</label>
+                                    <input type="text" name="{{ evalForm.autre_modalite.vars.full_name }}" id="{{evalForm.autre_modalite.vars.id}}" class="rempli-c" placeholder="Ajouter une nouvelle modalité si besoin ..." >
+                                {% endif %}
+                                {{ form_errors(evalForm.autre_modalite) }}
+                                {% do evalForm.autre_modalite.setRendered %}
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="texte">
-                    <h4>Texte d'introduction :</h4>
-                    <textarea placeholder="Ajoutez un texte..." class="rempli-c"></textarea>
+                    <label class="element">Texte d'introduction :</label>
+                    {% if evalForm.titre.vars.data is not null %}
+                        <label for="{{evalForm.introduction.vars.id}}">Texte d'introduction :</label>
+                        <textarea name="{{ evalForm.introduction.vars.full_name }}" id="{{evalForm.introduction.vars.id}}" class="rempli-c">{{evaluation.introduction}}</textarea
+                    {% else %}
+                        <label for="{{evalForm.introduction.vars.id}}">Texte d'introduction :</label>
+                        <textarea name="{{ evalForm.introduction.vars.full_name }}" id="{{evalForm.introduction.vars.id}}" class="rempli-c"></textarea>
+                    {% endif %}
+                    {{ form_errors(evalForm.introduction) }}
+                    {% do evalForm.introduction.setRendered %}
                 </div>
                 <div class="texte">
                     <h4>Nombre de questions dans l'évaluation :</h4>
@@ -197,8 +286,9 @@
                 </div> 
                 <div class="ret-suiv">
                     <button class="vide-c">Retour</button>
-                    {# <a class="vide-c" href="{{ path('app_eval_ajouter') }}">Suivant</a> #}
+                    <button class="vide-c" type="submit">Valider</button>
                 </div>
+             {{ form_end(evalForm) }}
             </div>
         </div>
     </main>
