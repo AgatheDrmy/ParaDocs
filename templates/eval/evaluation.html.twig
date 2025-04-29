@@ -286,6 +286,9 @@
                 </div> 
                 <div class="ret-suiv">
                     <button class="vide-c">Retour</button>
+                    <a href="{{ path('app_eval_pdf', {'id': evaluation.id}) }}" target="_blank" class="btn btn-secondary">
+                        <i class="fas fa-file-pdf"></i> Générer PDF
+                    </a>
                     <button class="vide-c" type="submit">Valider</button>
                 </div>
              {{ form_end(evalForm) }}

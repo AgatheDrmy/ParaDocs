@@ -1,0 +1,64 @@
+{# filepath: c:\wamp64\www\ParaDocs\templates\eval\pdf_template.html.twig #}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Évaluation {{ evaluation.id }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .evaluation-header {
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #ccc;
+        }
+        .question {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+        .question-enonce {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .proposition {
+            margin-left: 20px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="evaluation-header">
+        <h1>Évaluation : {{ evaluation.introduction }}</h1>
+        <p>Date : {{ evaluation.dateHeure|date('d/m/Y H:i') }}</p>
+        <p>Durée : {{ evaluation.duree|date('H:i') }}</p>
+        <p>Thème : {{ evaluation.themeEval.contenu }}</p>
+        <p>Difficulté : {{ evaluation.difficulteEval.libelle }}</p>
+    </div>
+
+    <h2>Questions</h2>
+    {% for question in questions %}
+        <div class="question">
+            <div class="question-enonce">{{ loop.index }}. {{ question.enonce }}</div>
+            
+            {% if question.propositionQuestion|length > 0 %}
+                <div class="propositions">
+                    {% for proposition in question.propositionQuestion %}
+                        <div class="proposition">
+                            {{ loop.index|upper }}) {{ proposition.libelle }}
+                            {% if proposition.isTrue %}
+                                <strong>(Réponse correcte)</strong>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    {% endfor %}
+</body>
+</html>

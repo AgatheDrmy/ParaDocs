@@ -10,14 +10,16 @@ use App\Repository\ThemeRepository;
 use App\Repository\UtilisateurRepository;
 use App\Repository\QuestionRepository;
 use App\Repository\EvaluationRepository;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
 
 use App\Form\EvalFormType;
+use App\Service\PdfService;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Attribute\Route;
+
 
 #[Route('/eval', name: 'app_eval_')]
 class EvalController extends AbstractController
@@ -104,6 +106,29 @@ class EvalController extends AbstractController
             'question' => $questionrepository->findBy([], ['id' => 'asc'])
         ]);
 
+    }
+
+    #[Route('/{id}/pdf', name: 'pdf')]
+    public function generatePdf(Evaluation $evaluation, PdfService $pdfService): Response
+    {
+        // Récupération des questions liées à l'évaluation
+        $questions = $evaluation->getQuestionEvaluation();
+        
+        // Rendu du template HTML pour le PDF
+        $html = $this->renderView('eval/pdf_template.html.twig', [
+            'evaluation' => $evaluation,
+            'questions' => $questions
+        ]);
+        
+        // Génération du PDF
+        return new Response(
+            $pdfService->generatePdf($html, 'evaluation-' . $evaluation->getId() . '.pdf', false),
+            200,
+            [
+                'Content-Type' => 'application/pdf',
+                'Content-Disposition' => 'inline; filename="evaluation-' . $evaluation->getId() . '.pdf"'
+            ]
+        );
     }
 
 }
