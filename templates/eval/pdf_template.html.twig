@@ -39,6 +39,24 @@
         <p>Durée : {{ evaluation.duree|date('H:i') }}</p>
         <p>Thème : {{ evaluation.themeEval.contenu }}</p>
         <p>Difficulté : {{ evaluation.difficulteEval.libelle }}</p>
+        <p> Introduction : {{ evaluation.introduction }}</p>
+        <p> Nombre de questions : {{ questions|length }}</p>
+        {% if evaluation.isCalculatrice == 1 %}
+            <p>Calculatrice : Oui</p>
+        {% else %}
+            <p>Calculatrice : Non</p>
+        {% endif %}
+        {% if evaluation.isOrdinateur == 1 %}
+            <p>Ordinateur : Oui</p>
+        {% else %}
+            <p>Ordinateur : Non</p>
+        {% endif %}
+        {% if evaluation.isDocument == 1 %}
+            <p>Document : Oui</p>
+        {% else %}
+            <p>Document : Non</p>
+        {% endif %}
+        
     </div>
 
     <h2>Questions</h2>
